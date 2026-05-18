@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
     // Abre a conexão com a tabela
 
     rc = sqlite3_open("teste.db", &db);
-
+    printf("%d\n",rc);
     if(rc){
         fprintf(stderr, "Não consegue abrir o banco: %s\n", sqlite3_errmsg(db));
         return (0);
@@ -33,11 +33,12 @@ int main(int argc, char* argv[]){
     // Comando SQL 
     //sql = "CREATE TABLE teste(""id INTEGER PRIMARY KEY," "nome TEXT NOT NULL"")";
     //sql = "INSERT INTO teste(nome)" "VALUES ('Luca')";
-    sql = "SELECT * FROM teste";
+    //sql = "SELECT * FROM teste";
     //sql = "DROP TABLE teste";
     
     //Executa o comando sql 
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+    //printf(rc);
 
     if(rc != SQLITE_OK){
         fprintf(stderr, "SQL error: %s\n", zErrMsg);

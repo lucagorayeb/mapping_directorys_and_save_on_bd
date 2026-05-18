@@ -13,14 +13,14 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
     return 0;
 }
 
-int connection(){
+int connection(char *database){
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
     char *sql;
 
     // Abre a conexão com a tabela
-    rc = sqlite3_open("teste.db", &db);
+    rc = abre_banco(database,db);
 
     if(rc){
         fprintf(stderr, "Não consegue abrir o banco: %s\n", sqlite3_errmsg(db));
@@ -29,8 +29,4 @@ int connection(){
         //fprintf(stderr, "Conexão estabelecida com sucesso\n");
     }*/
     //sqlite3_close(db);
-}
-
-int abre_banco(char database, sqlite3 *db){
-    return sqlite3_open(database, &db);
 }
