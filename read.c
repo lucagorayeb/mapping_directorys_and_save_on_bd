@@ -1,6 +1,6 @@
 #include "database.h"
 
-int create(sqlite3 *db, char *zErrMsg, char *sql, char *nome_db){
+int read(sqlite3 *db, char *zErrMsg, char *sql, char *nome_db){
     int rc;
     connection(nome_db, db);
 
@@ -10,7 +10,7 @@ int create(sqlite3 *db, char *zErrMsg, char *sql, char *nome_db){
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
     }else{
-        fprintf(stdout, "Tabela criada com sucesso\n");
+        fprintf(stdout, "Tabela selecionada com sucesso\n");
     }
     sqlite3_close(db);
     return 0;
