@@ -1,10 +1,6 @@
 #! /usr/bin/env bash
 
-DIRECTORY='/home/luca/documents/livros'
-PATH_FILE='/tmp/caminho_dos_livros.txt'
-PATH_DIRECTORY='/tmp/caminho_dos_subdiretorios.txt'
-CONTROLL_FILE='/tmp/controle_caminho_dos_livros.txt'
-CONTROLL_DIRECTORY='/tmp/controle_caminho_dos_subdiretorios.txt'
+source .env
 
 function children_directorys(){
     echo $(ls $DIRECTORY | wc -l)
