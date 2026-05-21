@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
 
     // Abre a conexão com a tabela
 
-    rc = sqlite3_open("teste.db", &db);
+    rc = sqlite3_open("teste.sqlite3", &db);
     printf("%d\n",rc);
     if(rc){
         fprintf(stderr, "Não consegue abrir o banco: %s\n", sqlite3_errmsg(db));
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
     //sqlite3_close(db);
 
     // Comando SQL 
-    //sql = "CREATE TABLE teste(""id INTEGER PRIMARY KEY," "nome TEXT NOT NULL"")";
+    sql = "CREATE TABLE teste(""id INTEGER PRIMARY KEY," "nome TEXT NOT NULL"")";
     //sql = "INSERT INTO teste(nome)" "VALUES ('Luca')";
     //sql = "SELECT * FROM teste";
     //sql = "DROP TABLE teste";
@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
     }else{
-        //fprintf(stdout, "Tabela criada com sucesso\n");
+        fprintf(stdout, "Tabela criada com sucesso\n");
         //fprintf(stdout, "Inserção criada com sucesso\n");
         //fprintf(stdout, "Seleção feita com sucesso\n");
         //fprintf(stdout, "Remoção feita com sucesso\n");
