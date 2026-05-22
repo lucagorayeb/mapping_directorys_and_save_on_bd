@@ -35,6 +35,7 @@ int display_menu(){
 	do_line(first_comand);
 	printf("\n%s\n", first_comand);
 	printf("%s\n", second_comand);
+	printf("%s\n", second_comand);
 	do_line(first_comand);
 	printf("\n");
 	user_interact_menu();
@@ -63,7 +64,14 @@ int menu_action(int option){
 		second_command(directory_name);
 	}
 
-	if(option != 2 && option != 1){
+	if(option == 3){
+		char *file_name = calloc(100, sizeof(char));
+		printf("File name: ");
+		scanf("%s", file_name);
+		third_command(file_name);
+	}
+
+	if(option != 2 && option != 1 && option != 3){
 		printf("Command not found.");
 		user_interact_menu();
 	}
@@ -83,6 +91,10 @@ int second_command(char *directory_name){
 	
 	system("./listagem_arquivos.sh");
 	return 0;
+}
+
+int third_command(){
+	system("xdg-open $(cat /tmp/controle_caminho_dos_livros.txt | grep um_arquivo_muito_especifico.txt)");
 }
 
 int main(){
