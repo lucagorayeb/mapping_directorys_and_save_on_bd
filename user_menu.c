@@ -25,6 +25,7 @@ int display_menu(){
 	char *word = "Directory Reader";
 	char *first_comand =  "[1] - List directorys          ";
 	char *second_comand = "[2] - List files from directory";
+	char *second_comand = "[3] - Open file";
 	
 	do_line(word);
 	printf("\n%s\n", word);
