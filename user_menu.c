@@ -1,4 +1,4 @@
-//#include "database.h"
+#include "database.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,19 +7,6 @@ int menu_action(int);
 int user_interact_menu(void);
 int second_command(char*);
 
-int do_line(char *word){
-	int size = strlen(word);
-	for(int i = 0; i <= size; i++){
-		if(i == 0){
-			printf("+");
-		}else if(i == size){
-			printf("+");
-		}else{
-			printf("-");
-		}
-	}
-	return 0;
-}
 
 int display_menu(){
 	char *word = "Directory Reader";
@@ -43,6 +30,20 @@ int display_menu(){
 	return 0;
 }
 
+int do_line(char *word){
+	int size = strlen(word);
+	for(int i = 0; i <= size; i++){
+		if(i == 0){
+			printf("+");
+		}else if(i == size){
+			printf("+");
+		}else{
+			printf("-");
+		}
+	}
+	return 0;
+}
+
 int user_interact_menu(){
 	int option;
 	printf("\nSelect one option: ");
@@ -61,14 +62,14 @@ int menu_action(int option){
 		char *directory_name = calloc(50, sizeof(char));
 		printf("Directory name: ");
 		scanf("%s", directory_name);
-		second_command(directory_name);
+		listing_directory_files(directory_name);
 	}
 
 	if(option == 3){
 		char *file_name = calloc(100, sizeof(char));
 		printf("File name: ");
 		scanf("%s", file_name);
-		third_command(file_name);
+		open_file_from_directory(file_name);
 	}
 
 	if(option != 2 && option != 1 && option != 3){
@@ -79,7 +80,9 @@ int menu_action(int option){
 	return 0;
 }
 
-int second_command(char *directory_name){
+// This command creates a shell script file that list files from 
+// a directory.
+int listing_directory_files(char *directory_name){
 	char directory_variable[100] = "DIRECTORY_NAME=";
 	strcat(directory_variable, directory_name);
 
@@ -93,8 +96,8 @@ int second_command(char *directory_name){
 	return 0;
 }
 
-int third_command(){
-	system("xdg-open $(cat /tmp/controle_caminho_dos_livros.txt | grep um_arquivo_muito_especifico.txt)");
+int open_file_from_directory(char* file_path){
+	system("xdg-open  | grep um_arquivo_muito_especifico.txt)");
 }
 
 int main(){
